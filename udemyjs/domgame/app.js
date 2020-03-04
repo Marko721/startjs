@@ -25,6 +25,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
         //var dice = 6;
         var dice = Math.floor(Math.random()*6) + 1;
+        var dice1 = Math.floor(Math.random()*6) + 1;
 
         if(prevDice == 6 && dice == 6) {
 
@@ -36,24 +37,28 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
         } else {
 
-            //save previous number to a variable
+            //save previous rolled dice to a variable
             prevDice = dice;
 
         }
 
         
-
-
-        // 2. Display the result
+        // 2. Display the result for first dice
         var diceDOM = document.querySelector('.dice');
+        diceDOM.style.display = 'block';
+        diceDOM.src = 'dice-' + dice1 + '.png';
+
+        //display the result for the second dice
+        var diceDOM = document.querySelector('.dice-1');
         diceDOM.style.display = 'block';
         diceDOM.src = 'dice-' + dice + '.png';
 
+
         // 3. Update the round score IF the rolled number was not a 1 && IF the previous and this roles are not 6
-        if(dice !== 1) {
+        if(dice !== 1 && dice1 !== 1) {
             
             //Add score
-            roundScore += dice;
+            roundScore += dice + dice1;
             document.querySelector('#current-' + activePlayer).textContent = roundScore;
 
         } else {
