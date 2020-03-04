@@ -9,84 +9,134 @@ GAME RULES:
 
 */
 
-var scores, roundScore, activePlayer, gamePlaying;
+
+//document.querySelector('#current-' + activePlayer).textContent = dice;
+//document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
+
+var scores, roundScore, activePlayer, gamePlaying, prevDice, winnerScore;
 
 init();
 
-
 document.querySelector('.btn-roll').addEventListener('click', function() {
-    if(gamePlaying) {
-        // 1. Random number
-        var dice = Math.floor(Math.random() * 6) + 1;
 
-        //2. Display the result
+    if(gamePlaying) {
+
+        // 1. Random number
+
+        //var dice = 6;
+        var dice = Math.floor(Math.random()*6) + 1;
+        var dice1 = Math.floor(Math.random()*6) + 1;
+
+        if(prevDice == 6 && dice == 6) {
+
+            prevDice = 0;
+            dice = 0;
+            roundScore = 0;
+            document.querySelector('#score-' + activePlayer).textContent = 0;
+            nextPlayer();
+
+        } else {
+
+            //save previous rolled dice to a variable
+            prevDice = dice;
+
+        }
+
+        
+        // 2. Display the result for first dice
         var diceDOM = document.querySelector('.dice');
         diceDOM.style.display = 'block';
         diceDOM.src = 'dice-' + dice + '.png';
 
+        //display the result for the second dice
+        var diceDOM = document.querySelector('.dice-1');
+        diceDOM.style.display = 'block';
+        diceDOM.src = 'dice-' + dice1 + '.png';
 
-        //3. Update the round score IF the rolled number was NOT a 1
-        if (dice !== 1) {
-            //Add score
-            roundScore += dice;
-            document.querySelector('#current-' + activePlayer).textContent = roundScore;
-        } else {
-            //Next player
+
+        // 3. Update the round score IF the rolled number was not a 1
+        if(dice == 1 || dice1 == 1) {
+            
+            //Next Player
             nextPlayer();
+
+        } else {
+
+            //Add score
+            roundScore += dice + dice1;
+            document.querySelector('#current-' + activePlayer).textContent = roundScore;
+
         }
-    }    
+
+    }
+
+
 });
 
-
 document.querySelector('.btn-hold').addEventListener('click', function() {
-    if (gamePlaying) {
-        // Add CURRENT score to GLOBAL score
-        scores[activePlayer] += roundScore;
+    
+    if(gamePlaying) {
 
-        // Update the UI
+        // Add Current score to Global score
+        scores[activePlayer] += roundScore;
+        
+
+        //update the UI
         document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
-        // Check if player won the game
-        if (scores[activePlayer] >= 100) {
-            document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
+
+        //Check if player won the game
+        if( scores[activePlayer] >= winnerScore ) {
+
+            document.querySelector('#name-' + activePlayer).textContent = "Winner!";
             document.querySelector('.dice').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
             document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+
             gamePlaying = false;
+
         } else {
-            //Next player
+
             nextPlayer();
+
         }
+
     }
+
+
 });
 
 
 function nextPlayer() {
-    //Next player
-    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+
+    //Next Player
+    (activePlayer === 0) ? activePlayer = 1 : activePlayer = 0;
     roundScore = 0;
 
     document.getElementById('current-0').textContent = '0';
     document.getElementById('current-1').textContent = '0';
 
+    //document.querySelector('.player-0-panel').classList.remove('active');
+    //document.querySelector('.player-1-panel').classList.add('active');
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
 
-    //document.querySelector('.player-0-panel').classList.remove('active');
-    //document.querySelector('.player-1-panel').classList.add('active');
-
     document.querySelector('.dice').style.display = 'none';
+
 }
+
 
 document.querySelector('.btn-new').addEventListener('click', init);
 
+
 function init() {
+
     scores = [0, 0];
-    activePlayer = 0;
     roundScore = 0;
+    activePlayer = 0;
     gamePlaying = true;
-    
-    document.querySelector('.dice').style.display = 'none';
+
+    document.querySelector('.dice').style.display = 'none'; 
 
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
@@ -99,11 +149,20 @@ function init() {
     document.querySelector('.player-0-panel').classList.remove('active');
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
+
 }
 
-//document.querySelector('#current-' + activePlayer).textContent = dice;
-//document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + '</em>';
-//var x = document.querySelector('#score-0').textContent;
+document.querySelector('.winner-score').addEventListener('click', function() {
+
+    var inputVal = document.getElementById("winnerScore").value;
+    var winner = document.getElementById("winner");
+    winner.textContent = 'Winner needs ' + inputVal + ' for victory';
+
+    winnerScore = inputVal;
+
+});
+
+
 
 
 
@@ -120,3 +179,41 @@ Change the game to follow these rules:
 2. Add an input field to the HTML where players can set the winning score, so that they can change the predefined score of 100. (Hint: you can read that value with the .value property in JavaScript. This is a good oportunity to use google to figure this out :)
 3. Add another dice to the game, so that there are two dices now. The player looses his current score when one of them is a 1. (Hint: you will need CSS to position the second dice, so take a look at the CSS code for the first one.)
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
