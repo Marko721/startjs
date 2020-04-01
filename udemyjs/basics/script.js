@@ -540,113 +540,129 @@ console.log(firstName + ' is a ' + age + ' year old ');
 
 //CHALLENGE
 
-var john = {
+// var john = {
 
-    bills: [124, 48, 268, 180, 42],
+//     bills: [124, 48, 268, 180, 42],
 
-    calcTip: function() {
+//     calcTip: function() {
 
-        for(var i = 0; i < this.bills.length; i++) {
+//         for(var i = 0; i < this.bills.length; i++) {
 
-            var percentage;
-            var bill = this.bills[i];
+//             var percentage;
+//             var bill = this.bills[i];
 
-            if(bill < 50) {
+//             if(bill < 50) {
 
-                percentage = 0.2;
+//                 percentage = 0.2;
 
-            } else if (bill >=50 && bill <= 200) {
+//             } else if (bill >=50 && bill <= 200) {
 
-                percentage = 0.15;
+//                 percentage = 0.15;
 
-            } else {
+//             } else {
 
-                percentage = 0.1;
+//                 percentage = 0.1;
 
-            }
+//             }
 
-            this.tips.push(bill * percentage);
-            this.total.push(bill * percentage + bill);
+//             this.tips.push(bill * percentage);
+//             this.total.push(bill * percentage + bill);
 
-        }
+//         }
 
-    },
+//     },
 
-    tips: [],
-    total: []
+//     tips: [],
+//     total: []
 
-}
+// }
 
-john.calcTip();
-console.log(john.tips);
-
-
-// Extra
-
-var mark = {
-
-    bills: [77, 475, 110, 45],
-
-    calcTip: function() {
-
-        for(var i = 0; i < this.bills.length; i++) {
-
-            if(this.bills[i] < 100) {
-
-                percentage = 0.2;
-
-            } else if (this.bills[i] >=100 && this.bills[i] <= 300) {
-
-                percentage = 0.1;
-
-            } else {
-
-                percentage = 0.25;
-
-            }
-
-            this.tips.push(this.bills[i] * percentage);
-            this.total.push(this.bills[i] * percentage + this.bills[i]);
-
-        }
-
-    },
-
-    tips: [],
-    total: []
-
-}
-
-mark.calcTip();
-
-function avgTip(tips) {
-
-    var sum = 0;
-
-    for(i=0; i<tips.length; i++) {
-
-        sum += tips[i];
-
-    }
-
-    return avg = sum / (tips.length);
-
-}
-
-var averageTipResultJohn = avgTip(john.tips);
-console.log('Johns average tip is ' + averageTipResultJohn);
-
-var averageTipResultMark = avgTip(mark.tips);
-console.log('Marks average tip is ' + averageTipResultMark);
-
-averageTipResultJohn > averageTipResultMark ? console.log('John paid the heighest average tip') : console.log('Mark paid the heighest average tip')
+// john.calcTip();
+// console.log(john.tips);
 
 
+// // Extra
+
+// var mark = {
+
+//     bills: [77, 475, 110, 45],
+
+//     calcTip: function() {
+
+//         for(var i = 0; i < this.bills.length; i++) {
+
+//             if(this.bills[i] < 100) {
+
+//                 percentage = 0.2;
+
+//             } else if (this.bills[i] >=100 && this.bills[i] <= 300) {
+
+//                 percentage = 0.1;
+
+//             } else {
+
+//                 percentage = 0.25;
+
+//             }
+
+//             this.tips.push(this.bills[i] * percentage);
+//             this.total.push(this.bills[i] * percentage + this.bills[i]);
+
+//         }
+
+//     },
+
+//     tips: [],
+//     total: []
+
+// }
+
+// mark.calcTip();
+
+// function avgTip(tips) {
+
+//     var sum = 0;
+
+//     for(i=0; i<tips.length; i++) {
+
+//         sum += tips[i];
+
+//     }
+
+//     return avg = sum / (tips.length);
+
+// }
+
+// var averageTipResultJohn = avgTip(john.tips);
+// console.log('Johns average tip is ' + averageTipResultJohn);
+
+// var averageTipResultMark = avgTip(mark.tips);
+// console.log('Marks average tip is ' + averageTipResultMark);
+
+// averageTipResultJohn > averageTipResultMark ? console.log('John paid the heighest average tip') : console.log('Mark paid the heighest average tip')
 
 
 
 
 
+
+// now = 2018;
+// year = 'godina';
+// broj = 28;
+
+
+// function ispisi(broj) {
+
+//     console.log(broj);
+
+// }
+
+// console.log(now, year, broj);
+
+
+// ispisi(25);
+
+// console.log(broj);
 
 
 
